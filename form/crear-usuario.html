@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercamona</title>
+    <link rel="stylesheet" href="https://bootswatch.com/4/superhero/bootstrap.min.css">
+    <script src="crear-usuario.js"></script>
+</head>
+
+<body>
+    <header class="header">MERCAMONA</header>
+    <nav class="navbar navbar-expand navbar-light bg-light">
+        <div class="nav navbar-nav">
+            <a class="nav-item nav-link active" href="#">Crear Usuario</a>
+            <a class="nav-item nav-link" href="#">Ingresar Dinero</a>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <form class="form" novalidate>
+                    <div class="form-group">
+                        <label>Nombre: <input type="text" class="form-control required" id="nombre" placeholder="Escribe aquí tu nombre"></label>
+                    </div>
+                    <div class="form-group">
+                        <label>Primer apellido: <input type="text" class="form-control required" id="apellido1" placeholder="Escribe aquí tu primer apellido"></label>
+                    </div>
+                    <div class="form-group">
+                        <label>Segundo apellido: <input type="text" class="form-control" id="apellido2" placeholder="Escribe aquí tu segundo apellido"></label>
+                    </div>
+                    <div class="form-group">
+                        <label>Contraseña: <input type="password" class="form-control required" id="pass"></label>
+                    </div>
+                    <div class="form-group form-row">
+                        <button type="reset" class="btn btn-danger" id="reset">Borrar todo</button>
+                        <button type="button" class="btn btn-warning" id="borrarCampo">Borra el campo que tiene el foco</button>
+                        <button type="submit" class="btn btn-success" id="enviar">Enviar</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-md-6 col-sm-12" id="esconder"></div>
+        </div>
+    </div>
+    <footer class="container">
+        Código libre, sin &copy;
+    </footer>
+    <script></script>
+</body>
+
+</html>

@@ -1,0 +1,181 @@
+
+    Mostrar los resultados la liga española (Primera División PD) de los partidos de la jornada indicados. Deberá incluir el nombre de los equipos, el ganador y el resultado.
+    Mostrar los 5 máximos goleadores de la liga española. Se deben poner los datos siguientes:
+        Nombre.
+        Cantidad de goles
+        Equipo.
+
+Ahora bien, si queréis sumar más puntuación del 10, tal y como hicimos en la tarea anterior, y podrás obtener hasta 11 puntos. Podéis elegir voluntariamente alguna de estas opciones:
+
+    Además de la Primera División añadir la Premier Leage, Bundesliga y la Serie A italiana a la tarea anterior.  Pensad en una forma en la que encaje.  Esta tarea os dará 0,5 puntos más. 
+    Añadir a los resultados de la jornada  el árbitro principal (referee),  que goles han sido de penality, si la jornada se ha terminado.
+    Encontrar el máximo goleador de la Primera División añadir la Premier Leage, Bundesliga y la Serie A. Es escoger el mejor de entre todas las ligas y ponerlo, junto a la liga a la que pertenece.  (0,5 puntos).
+    Obtener los datos JSON sin jQuery, con  el objeto nativo del lenguaje. (0,5 puntos)
+
+El porqué de esta subida de puntuación es para equilibrar los errores tontos que tuvisteis en las primeras tareas por falta de experiencia. 
+
+Observaciones:
+
+    jQuery es necesario para la práctica. Ya verás como te soluciona la vida.
+    Si creas una función para gestionar un evento en jQuery puede llevar un parámetro evento (es opcional) pero muy interesante para abortar la propagación del evento. Podrías usar por ejemplo:
+
+    $("button").click(function (evt) {
+
+       //// Código
+
+       evt.preventDefault();
+       
+    });
+
+    Para cambiar el CSS con jQuery podéis utilizar:
+
+$('#elemento').css('propiedad-css', 'valor a asignar');
+
+Y además os ayudo un poco para que entendáis las estructuras que se necesitan:
+
+Aquí quiero ayudaros a comprender un poco más como funciona esta API realmente fácil. Cómo está en inglés os recomiendo un diccionario y que os leáis esta página.
+
+Al registraros os llegará un correo con una contraseña. Esa contraseña se utilizará de una forma complementaria a los apuntes.
+
+    $.ajaxSetup({
+	headers : {
+	   'X-Auth-Token' : 'VUESTRO CÓDIGO AQUÍ'
+	}
+    });
+
+De esta forma no tenéis la obligación de usar $.ajax y podéis usar  las otras formas. Si por casualidad queréis hacer la parte opcional y utilizar xmlhttprequest
+
+XMLHttpRequest.setRequestHeader('X-Auth-Token', 'VUESTRO CÓDIGO AQUÍ')
+
+Consultemos los partidos de de la jornada 11.
+
+    https://api.football-data.org/v2/competitions/PD/matches?matchday=11
+
+Si utilizas un console.log y muestras el objeto que recibes puedes navegar por él de forma fácil. Voy a poner un fragmento para que
+
+{
+    "count": 10,
+    "filters": {
+        "matchday": "11"
+    },
+    "competition": {
+        "id": 2014,
+        "area": {
+            "id": 2224,
+            "name": "Spain"
+        },
+        "name": "Primera Division",
+        "code": "PD",
+        "plan": "TIER_ONE",
+        "lastUpdated": "2019-03-18T21:05:11Z"
+    },
+    "matches": [{
+        "id": 246220,
+        "season": {
+            "id": 281,
+            "startDate": "2018-08-17",
+            "endDate": "2019-05-26",
+            "currentMatchday": 29
+        },
+        "utcDate": "2018-11-03T12:00:00Z",
+        "status": "FINISHED",
+        "matchday": 11,
+        "stage": "REGULAR_SEASON",
+        "group": "Regular Season",
+        "lastUpdated": "2019-01-26T21:32:15Z",
+        "score": {
+            "winner": "DRAW",
+            "duration": "REGULAR",
+            "fullTime": {
+                "homeTeam": 1,
+                "awayTeam": 1
+            },
+            "halfTime": {
+                "homeTeam": 0,
+                "awayTeam": 0
+            },
+            "extraTime": {
+                "homeTeam": null,
+                "awayTeam": null
+            },
+            "penalties": {
+                "homeTeam": null,
+                "awayTeam": null
+            }
+        },
+        "homeTeam": {
+            "id": 745,
+            "name": "CD Leganés"
+        },
+        "awayTeam": {
+            "id": 78,
+            "name": "Club Atlético de Madrid"
+        },
+        "referees": [{
+            "id": 56948,
+            "name": "Mario Melero",
+            "nationality": null
+        }, {
+            "id": 56949,
+            "name": "Manuel Torre",
+            "nationality": null
+        }, {
+            "id": 56950,
+            "name": "José Martínez",
+            "nationality": null
+        }, {
+            "id": 57276,
+            "name": "Francisco Sáez Vital",
+            "nationality": null
+        }, {
+            "id": 39,
+            "name": "Alfonso Álvarez",
+            "nationality": null
+        }]
+    }, {
+        "id": 246212,
+        "season": {
+            "id": 281,
+            "startDate": "2018-08-17",
+            "endDate": "2019-05-26",
+            "currentMatchday": 29
+        },
+        "utcDate": "2018-11-03T15:15:00Z",
+        "status": "FINISHED",
+        "matchday": 11,
+        "stage": "REGULAR_SEASON",
+        "group": "Regular Season",
+        "lastUpdated": "2019-01-26T21:32:15Z",
+        "score": {
+            "winner": "HOME_TEAM",
+            "duration": "REGULAR",
+            "fullTime": {
+                "homeTeam": 2,
+                "awayTeam": 0
+            },
+            "halfTime": {
+                "homeTeam": 0,
+                "awayTeam": 0
+            },
+            "extraTime": {
+                "homeTeam": null,
+                "awayTeam": null
+            },
+            "penalties": {
+                "homeTeam": null,
+                "awayTeam": null
+            }
+        },
+// Continuaría, pero no nos hace falta para explicar. 
+
+Cómo podéis ver hay demasiada información. Comentaré las más importantes:
+
+Nada más empezar aparece "count": 10 . Nos proporciona el numero de partidos. En la liga española tenemos 20 equipos.
+
+$('#cambia').append("La jornada tiene "+datos_devueltos.count+" partidos.");
+
+De filters podemos averiguar la jornada (algo un tanto absurdo en esta tarea).
+De competition podemos obtener información interesante como por ejemplo si es primera o segunda vuelta (code)
+Después empieza la parte interesante que es matches. Es un array que tiene la longitud indicada en el count anterior. Aunque también puedes usar matches.length para averiguar el total. Dentro tendremos el array score que nos va a permitir obtener el resultado del partido en los tiempos y al final. También se encuentra winner que va a indicar cual es ganador: el equipo local o visitante.  homeTeam  contiene el nombre del equipo local y awayTeam  contiene el nombre del equipo visitante.  Hay bastante información que es realtivamente secilla de entender, como referees es un array que contiene el nombre de los árbitros.
+
+La segunda consulta es más sencilla. Ya os dejo averiguar como  funciona.
